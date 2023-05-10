@@ -19,17 +19,9 @@ int main()
     cin>> telefono;
     cin.ignore();
     cout << "Ingrese Fecha de Nacimiento:";
-    cin >> telefono;
-
-
-}
-
-
-
-
-
-
-    Cliente c = Cliente();
+    cin >> fecha_nacimiento;
+    Cliente c = Cliente(nombres, apellidos, direccion, telefono, fecha_nacimiento, nit);
+    c.crear();
     c.leer();
     system("pause");
     return 0;

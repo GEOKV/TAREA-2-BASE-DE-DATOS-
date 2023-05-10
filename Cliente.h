@@ -1,11 +1,11 @@
 #pragma once
 #include <mysql.h>
 #include <iostream>
+#include <string>
 #include "ConexionBD.h"
 #include "Persona.h"
 using namespace std;
-class Cliente :
-    public Persona{
+class Cliente : Persona{
 	// atributos
 private: string nit;
 	   // constructor
@@ -31,6 +31,27 @@ public:
 	int getTelefono() { return telefono; }
 
 	// metodo
+	void crear() {
+		int q_estado;
+		ConexionBD cn = ConexionBD();
+		cn.abrir_conexion();
+		if (cn.getConectar()) {
+			string t = to_string(telefono);
+			string  insert = "INSERT INTO clientes(nit,nombres,apellidos,direccion,telefono,fecha_nacimiento)VALUES('" + nit +"','" + nombres + "', '" + apellidos + "', '" + direccion + "'," + t + ",'" + fecha_nacimiento + "')";
+			const char* i = insert.c_str();
+			q_estado = mysql_query(cn.getConectar(), i);
+			if (!q_estado) { 
+				cout << "Ingreso Exitoso..." << endl;
+			}
+			else {
+				cout << "XXXX Error al Ingresar XXXX" << endl;
+			}
+		}
+		else {
+			cout << "Error en la Conexion..." << endl;
+		}
+		cn.cerrar_conexion();
+	}
 	void leer() {
 		int q_estado;
 		ConexionBD cn = ConexionBD();
