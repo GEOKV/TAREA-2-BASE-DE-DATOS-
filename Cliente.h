@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <mysql.h>
 #include <iostream>
 #include <string>
@@ -65,6 +65,7 @@ public:
 				if (!q_estado) {
 					resultado = mysql_store_result(cn.getConectar());
 					cout << "---------------------------Clientes-------------------------------"<<endl;
+				
 					while (fila = mysql_fetch_row(resultado)) {
 						cout << fila[0] << "," << fila[1] << "," << fila[2] << "," << fila[3] << "," << fila[4] << "," << fila[5] << "," << fila[6] << endl;
 					}
@@ -78,5 +79,5 @@ public:
 			}
 			cn.cerrar_conexion();
 	}
-};
+};*/
 
